@@ -1,0 +1,7 @@
+body {
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12pt;
+  font-weight: 300;
+  background-color: #2e2e2e; /* grigio scuro */
+  color: #ffffff; /* testo chiaro per contrasto */
+}
