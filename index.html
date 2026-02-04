@@ -5,64 +5,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cardinale Giulia | Portfolio</title>
 
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font (elegante e fotografico) -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- SFONDO SETA -->
+  <canvas id="lines-bg"></canvas>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Cardinale Giulia</h1>
-      <br> 
-      <p class="subtitle">portfolio fotografico</p>
-
-      <div class="hero-links">
-        <a href="#" target="_blank">Instagram</a>
+      <h1 class="fade-item">Cardinale Giulia</h1>
+      <p class="subtitle fade-item">portfolio grafico & fotografico</p>
+      <div class="hero-links fade-item">
+        <a href="https://www.instagram.com/giuliacardinale__/" target="_blank">Instagram</a>
       </div>
-    </div>
-
-    <div class="hero-image">
-        <br> 
-        <br>
-      <img src="immagini/lei.jpg" alt="Ritratto di Giulia">
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="about">
-    <h2>About</h2>
+  <section class="about reveal">
+    <h2>About Me</h2>
     <p>
-      <!-- TESTO DA INSERIRE -->
-      Fotografa.. info 
+      Creativa multidisciplinare specializzata in fotografia, grafica e direzione artistica.
+      Il mio lavoro unisce estetica, composizione e narrazione visiva.
     </p>
   </section>
 
   <!-- GALLERY -->
   <section class="gallery">
-    <!-- SLOT IMMAGINI -->
-    <img src="immagini/foto1.jpg" alt="">
-    <img src="immagini/foto2.jpg" alt="">
-    <img src="immagini/foto3.jpg" alt="">
-    <img src="immagini/foto4.jpg" alt="">
-    <img src="immagini/foto5.jpg" alt="">
-    <img src="immagini/foto6.jpg" alt="">
+
+    <a href="ritratti.html" class="gallery-item" data-title="cose">
+      <img class="reveal" src="immagini/lei.jpg" alt="ritratto">
+    </a>
+
+    <a href="viaggi.html" class="gallery-item" data-title="Viaggi">
+      <img class="reveal" src="immagini/foto1.jpg" alt="scatto 1">
+    </a>
+
+    <a href="moda.html" class="gallery-item" data-title="Moda">
+      <img class="reveal" src="immagini/foto2.jpg" alt="scatto 2">
+    </a>
+
+    <a href="street.html" class="gallery-item" data-title="Street">
+      <img class="reveal" src="immagini/foto3.jpg" alt="scatto 3">
+    </a>
+
+    <a href="progetti.html" class="gallery-item" data-title="Progetti">
+      <img class="reveal" src="immagini/foto4.jpg" alt="scatto 4">
+    </a>
+
+    <a href="altro.html" class="gallery-item" data-title="Altro">
+      <img class="reveal" src="immagini/foto5.jpg" alt="scatto 5">
+    </a>
+
   </section>
 
-  <!-- FOOTER / CONTATTI -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 Cardinale Giulia</p>
-
     <div class="footer-links">
       <a href="#" target="_blank">Instagram</a>
       <a href="#">Email</a>
       <a href="#">Behance</a>
     </div>
   </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // SFONDO "LINEE DI SETA" — VERSIONE PIÙ VISIBILE
+    const canvas = document.getElementById("lines-bg");
+    const ctx = canvas.getContext("2d");
+
+    let w, h, t = 0;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    function drawSilk() {
+      t += 0.003;
+
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, w, h);
+
+      for (let i = 0; i < 7; i++) {
+        ctx.beginPath();
+        ctx.lineWidth = 1.4;
+        ctx.strokeStyle = "rgba(255,255,255,0.28)";
+
+        for (let x = 0; x <= w; x += 3) {
+          const y =
+            h / 2 +
+            Math.sin(x * 0.003 + t * 2 + i) * 110 +
+            Math.cos(t * 1.5 + i) * 55;
+
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(drawSilk);
+    }
+
+    drawSilk();
+
+    // ANIMAZIONI SCROLL
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      for (let el of reveals) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add("visible");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
