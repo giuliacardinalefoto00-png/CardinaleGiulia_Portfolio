@@ -1,78 +1,188 @@
+/* -------------------- BASE -------------------- */
+
 body {
   margin: 0;
-  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12pt;
-  font-weight: 300;
-  background-color: #2e2e2e;
+  background-color: #000000;
   color: #ffffff;
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* contenitore centrale */
+canvas#lines-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* -------------------- HERO -------------------- */
+
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 20px;
 }
 
-/* nome */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .hero h1 {
-  margin: 0;
-  font-size: 32pt;
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* sottotitolo */
-.subtitle {
-  margin: 10px 0 30px;
+  font-size: 80px;
+  font-weight: 600;
+  text-transform: uppercase;
   letter-spacing: 2px;
-  text-transform: lowercase;
+  font-family: "Playfair Display", serif;
+  margin: 0;
 }
 
-/* link */
-.hero a {
+.subtitle {
+  font-size: 20px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.hero-links a {
+  font-size: 16px;
+  letter-spacing: 2px;
   color: #ffffff;
   text-decoration: none;
-  margin-bottom: 30px;
-  font-size: 11pt;
+  transition: opacity 0.3s ease;
 }
 
-.hero a:hover {
-  text-decoration: underline;
+.hero-links a:hover {
+  opacity: 0.6;
 }
 
-/* immagine */
-.hero img {
-  width: 600px;
-  height: auto;
+/* -------------------- ANIMAZIONE HERO -------------------- */
+
+.fade-item {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s ease-out forwards;
 }
 
-/* gallery */
+.fade-item:nth-of-type(1) { animation-delay: 0.1s; }
+.fade-item:nth-of-type(2) { animation-delay: 0.35s; }
+.fade-item:nth-of-type(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------- ABOUT -------------------- */
+
+.about {
+  max-width: 900px;
+  margin: 140px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.about p {
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+/* -------------------- ANIMAZIONE SCROLL -------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(4px);
+  transition: all 1s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* -------------------- GALLERY -------------------- */
+
 .gallery {
+  max-width: 1300px;
+  margin: 100px auto;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1000px;
-  margin: 80px auto;
-  padding: 0 20px;
+  gap: 30px;
+}
+
+.gallery a {
+  text-decoration: none;
 }
 
 .gallery img {
   width: 100%;
-  height: auto;
-  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* animazione */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.gallery img:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+/* ---------- HOVER CON TITOLO E OPACITÀ ---------- */
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  opacity: 0.35;
+  transform: scale(1.03);
+}
+
+.gallery-item::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 28px;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* -------------------- FOOTER -------------------- */
+
+.footer {
+  text-align: center;
+  padding: 60px 0;
+  opacity: 0.7;
+}
+
+.footer-links a {
+  margin: 0 14px;
+  font-size: 14px;
 }
