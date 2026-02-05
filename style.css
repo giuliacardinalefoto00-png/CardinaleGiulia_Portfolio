@@ -4,7 +4,7 @@ body {
   margin: 0;
   background-color: #000000;
   color: #ffffff;
-  font-family: "Inter", sans-serif;
+  font-family: "Garamond", "EB Garamond", serif;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -14,6 +14,7 @@ canvas#lines-bg {
   top: 0;
   left: 0;
   z-index: -1;
+  pointer-events: none;
 }
 
 /* -------------------- HERO -------------------- */
@@ -30,7 +31,7 @@ canvas#lines-bg {
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
 }
 
 .hero h1 {
@@ -38,7 +39,7 @@ canvas#lines-bg {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: "Playfair Display", serif;
+  font-family: "Garamond", "EB Garamond", serif;
   margin: 0;
 }
 
@@ -47,6 +48,7 @@ canvas#lines-bg {
   letter-spacing: 2px;
   opacity: 0.85;
   margin: 0;
+  font-family: "Garamond", "EB Garamond", serif;
 }
 
 .hero-links a {
@@ -55,6 +57,7 @@ canvas#lines-bg {
   color: #ffffff;
   text-decoration: none;
   transition: opacity 0.3s ease;
+  font-family: "Garamond", "EB Garamond", serif;
 }
 
 .hero-links a:hover {
@@ -90,12 +93,13 @@ canvas#lines-bg {
 .about h2 {
   font-size: 48px;
   margin-bottom: 20px;
-  font-family: "Playfair Display", serif;
+  font-family: "Garamond", "EB Garamond", serif;
 }
 
 .about p {
   font-size: 18px;
   opacity: 0.85;
+  font-family: "Garamond", "EB Garamond", serif;
 }
 
 /* -------------------- ANIMAZIONE SCROLL -------------------- */
@@ -144,6 +148,7 @@ canvas#lines-bg {
 .gallery-item {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .gallery-item img {
@@ -163,7 +168,7 @@ canvas#lines-bg {
   transform: translate(-50%, -50%);
   color: #ffffff;
   font-size: 28px;
-  font-family: "Playfair Display", serif;
+  font-family: "Garamond", "EB Garamond", serif;
   letter-spacing: 2px;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -180,15 +185,24 @@ canvas#lines-bg {
   text-align: center;
   padding: 60px 0;
   opacity: 0.7;
+  font-family: "Garamond", "EB Garamond", serif;
 }
 
 .footer-links a {
   margin: 0 14px;
   font-size: 14px;
+  color: #ffffff;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  font-family: "Garamond", "EB Garamond", serif;
 }
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
 /* -------------------- MOBILE OPTIMIZATION -------------------- */
 
-/* Titolo più piccolo su telefono */
 @media (max-width: 600px) {
   .hero h1 {
     font-size: 48px;
@@ -223,14 +237,4 @@ canvas#lines-bg {
   footer {
     padding: 40px 0;
   }
-}
-
-/* Migliora il tocco su mobile */
-.gallery-item {
-  cursor: pointer;
-}
-
-.hero-links a {
-  padding: 10px 0;
-  display: inline-block;
 }
