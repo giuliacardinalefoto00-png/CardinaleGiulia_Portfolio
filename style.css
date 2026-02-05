@@ -238,3 +238,25 @@ canvas#lines-bg {
     padding: 40px 0;
   }
 }
+/* -------------------- LOGO HEADER -------------------- */
+
+.logo-header {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  z-index: 20;
+}
+
+.logo {
+  font-family: "Garamond", "EB Garamond", serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 1;
+}
